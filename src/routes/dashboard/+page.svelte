@@ -1,5 +1,21 @@
-<script>
+<script lang="ts">
   import "../../app.css";
+
+  let formData = {
+    postContent: ''
+  }   
+
+  const createPost = async () => {
+    try {
+        const sendData = await fetch(
+            'http://localhost:5000/api/v1/posts/create-post/25')
+        
+    } catch (error) {
+        console.log(error);
+        throw new Error()
+    }
+  }
+
 </script>
 
 <!-- component -->

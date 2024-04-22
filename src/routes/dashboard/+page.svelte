@@ -1,21 +1,65 @@
 <script lang="ts">
   import "../../app.css";
+  import cookies from "js-cookie";
+  // import { userIdStore } from "$lib/store/store";
+  import { jwtDecode } from "jwt-decode";
+
+  // let userId: any;
+  let id: any;
 
   let formData = {
-    postContent: ''
-  }   
+    title: "",
+  };
 
+  // userIdStore.subscribe((value) => {
+  //   userId = value;
+  // });
+
+  // console.log(userId);
+  // if (userId !== null && userId !== undefined) {
+  //   console.log(cookies.set('id', userId));
+
+  //   id = cookies.get("id");
+
+  //   console.log(id);
+  // } else {
+  //   console.log(undefined);
+  // }
+  const tokenUser = cookies.get("jwt");
+
+  console.log(tokenUser);
+
+  id = jwtDecode(String(tokenUser))
+  console.log(typeof id);
+  console.log(id);
+  
+  const { userId } = id
+  console.log(userId);
+  
   const createPost = async () => {
-    try {
-        const sendData = await fetch(
-            'http://localhost:5000/api/v1/posts/create-post/25')
-        
-    } catch (error) {
-        console.log(error);
-        throw new Error()
-    }
-  }
+    const tokenUser = cookies.get("jwt");
 
+    console.log(tokenUser);
+
+    try {
+      const sendData = await fetch(
+        `http://localhost:5000/api/v1/posts/create-post/${userId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${tokenUser}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      console.log(sendData);
+    } catch (error) {
+      console.log(error);
+      throw new Error();
+    }
+  };
 </script>
 
 <!-- component -->
@@ -153,10 +197,14 @@
     class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-12 mx-12 w-2xl container px-2 mx-auto"
   >
     <article class="">
-      <form class="bg-white shadow rounded-lg mb-6 p-4">
+      <form
+        on:submit|preventDefault={createPost}
+        class="bg-white shadow rounded-lg mb-6 p-4"
+      >
         <textarea
           name="message"
           placeholder="Type something..."
+          bind:value={formData.title}
           class="w-full rounded-lg p-2 text-sm bg-gray-100 border border-transparent appearance-none rounded-tg placeholder-gray-400"
         ></textarea>
         <footer class="flex justify-between mt-2">

@@ -23,7 +23,11 @@
       }
 
       const tokenSession = await send.json();
-      cookie.set("jwt", tokenSession.token);
+      cookie.set("jwt", tokenSession.token, {
+        path: "/",
+        sameSite: "None",
+        secure: true,
+      });
 
       console.log(tokenSession);
       console.log(send);

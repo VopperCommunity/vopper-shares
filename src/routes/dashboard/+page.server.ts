@@ -31,6 +31,6 @@ export const load: PageServerLoad = async ({ cookies }) => {
     userIdStore.set(userId)
 
   } catch (error) {
-    return redirect(303, "auth/login");
+    return redirect(303, "/auth/login");
   }
 };

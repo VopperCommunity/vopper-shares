@@ -7,7 +7,7 @@
   <nav class="container flex items-center justify-between">
     <div class="w-68 py-5 flex items-center">
       <img src="{devshares}" alt="" class="w-16 h-16">
-      <h2 class="text-3xl font-semibold font-serif">Dev Shares</h2>
+      <h2 class="text-xl font-semibold font-serif sm:text-3xl">Dev Shares</h2>
       <div class="px-5">
         <ul class="hidden lg:flex items-center space-x-6 text-base text-gray-600">
           <li><a href="" class="hover:text-black ease-linear duration-200">¿Como funciona?</a></li>

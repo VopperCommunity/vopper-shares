@@ -1,11 +1,9 @@
 <script lang="ts">
   import "../../app.css";
   import cookies from "js-cookie";
-  // import { userIdStore } from "$lib/store/store";
   import { jwtDecode } from "jwt-decode";
   import { onMount } from "svelte";
 
-  // let userId: any;
   let id: any;
   let user: any;
   let posts: Array<string>
@@ -14,20 +12,6 @@
     title: "",
   };
 
-  // userIdStore.subscribe((value) => {
-  //   userId = value;
-  // });
-
-  // console.log(userId);
-  // if (userId !== null && userId !== undefined) {
-  //   console.log(cookies.set('id', userId));
-
-  //   id = cookies.get("id");
-
-  //   console.log(id);
-  // } else {
-  //   console.log(undefined);
-  // }
   const tokenUser = cookies.get("jwt");
 
   console.log(tokenUser);

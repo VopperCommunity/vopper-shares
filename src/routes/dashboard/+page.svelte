@@ -1,4 +1,5 @@
 <script lang="ts">
+  /*
   import "../../app.css";
   import cookies from "js-cookie";
   import { jwtDecode } from "jwt-decode";
@@ -76,4 +77,5 @@
   onMount(() => {
     getDataUser();
   });
+  */
 </script>

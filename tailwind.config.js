@@ -9,6 +9,12 @@ export default {
           DEFAULT: "20px",
           md: "50px"
         }
+      },
+      fontFamily: {
+        'principal': ['Bitter', 'serif;']
+      },
+      colors:{
+        'purple-light': "#CFCFFC"
       }
     }
   },

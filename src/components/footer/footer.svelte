@@ -9,7 +9,7 @@
 <footer class="bg-[#1D2128FF] flex relative justify-center items-center lg:h-[356px] h-[556px] text-white">
   <article class="w-5/6 lg:h-52 h-96 flex lg:justify-between lg:flex-row flex-col lg:items-start items-center gap-10">
     <DevShares/>
-    <section class="flex gap-10">
+    <section class="flex justify-between w-96">
       <div class="flex flex-col gap-1 lg:gap-3">
         <strong class="text-lg">Product</strong>
         <a href="">Features</a>
@@ -27,12 +27,12 @@
         <a href="">Join us</a>
       </div>
     </section>
-    <section class="flex flex-col gap-3 lg:w-72 w-full justify-between">
+    <section class="flex flex-col gap-3 lg:w-[26rem] w-full justify-between">
       <strong class="text-[#6C69F6FF] text-lg">Subscribe to our newsletter</strong>
       <p class="text-xs">For product announcements and exclusive insights</p>
       <form class="flex">
         <input
-        class="bg-[#323842FF] text-sm py-1 pl-2 pr-16 rounded-s-lg"
+        class="bg-[#323842FF] text-sm py-1 pl-2 pr-40 rounded-s-lg"
         type="email" placeholder="Input your email">
         <input
         class="bg-[#6C69F6FF] text-sm py-1 px-4 rounded-r-lg"

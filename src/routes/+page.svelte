@@ -2,6 +2,8 @@
   import estudio from "$lib/images/estudio_landing.png"; //importacion de estudio
   import RecognizedDevCard from "../components/landing/RecognizedDevCard.svelte";
   import Navbar from "../components/navbar/Navbar.svelte"; //importacion de navbar (falta responsive)
+  import Footer from "../components/footer/footer.svelte"; //Import footer - no responsive
+  
   let devsRecognized = [
     {
       fullName: "Olivia Reynolds",
@@ -55,11 +57,13 @@
             <p class="mb-10">
               unete a la comunidad de programadores he interactua con ellos
             </p>
+            <!-- svelte-ignore a11y-invalid-attribute -->
             <a
               href=""
               class="text-sm px-2 py-3 rounded-t-xl rounded-br-xl bg-orange-300 border border-black"
               >Comenzar a leer</a
             >
+            <!-- svelte-ignore a11y-invalid-attribute -->
             <a href="" class="text-sm px-2 py-3 rounded-xl border border-black"
               >Convertirme en autor</a
             >
@@ -122,3 +126,5 @@
     </div>
   </div>
 </section>
+
+<Footer/>

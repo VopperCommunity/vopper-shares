@@ -11,7 +11,7 @@
   <summary
     class="flex cursor-pointer list-none items-center gap-1 font-semibold text-lg"
   >
-    <div>
+    <section>
       <!-- Agregamos nuestro propio SVG de triángulo/flecha -->
       <svg
         class="rotate-0 transform text-blue-700 transition-all duration-300"
@@ -26,8 +26,8 @@
       >
         <polyline points="6 9 12 15 18 9"></polyline>
       </svg>
-    </div>
-    <div>{title}</div>
+    </section>
+    <h1>{title}</h1>
   </summary>
   <p class=" w-[650px] mt-2">
     {message}

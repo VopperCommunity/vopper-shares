@@ -18,20 +18,21 @@
     "No ads",
   ];
 
-  if (browser) {
-    const form = document.querySelector("form") as HTMLFormElement;
+  const enviar = () => {
+    if (browser) {
+      const form = document.querySelector("form") as HTMLFormElement;
+      form.addEventListener("submit", (event) => {
+        // prevent default action form
+        event.preventDefault();
+        // get plan selected of the input of type radio
+        const selected = document.querySelector(
+          'input[name="pricing"]:checked'
+        ) as HTMLInputElement;
 
-    form.addEventListener("submit", (event) => {
-      // prevent default action form
-      event.preventDefault();
-      // get plan selected of the input of type radio
-      const selected = document.querySelector(
-        'input[name="pricing"]:checked'
-      ) as HTMLInputElement;
-
-      console.log(selected.value);
-    });
-  }
+        console.log(selected.value);
+      });
+    }
+  };
 </script>
 
 <!--Remove comment if you want to enable this navbar:
@@ -79,6 +80,7 @@
         <Plans title="Annually" options={annuallyOptions} price="50.00" />
         <button
           id="submit"
+          on:click={enviar}
           class="w-full border text-white bg-[#6c69f6] p-5 rounded-[12px]"
           type="submit">CONTINUE</button
         >

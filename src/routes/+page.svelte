@@ -1,5 +1,5 @@
 <script>
-  import estudio from "$lib/images/estudio_landing.png"; //importacion de estudio
+  import estudio from "$lib/images/estudio_landing.avif"; //importacion de estudio
   import Navbar from "../components/navbar/Navbar.svelte"; //importacion de navbar (falta responsive)
   import Footer from "../components/footer/footer.svelte"; //Import footer - no responsive
 </script>
@@ -54,13 +54,13 @@
 <!--Images section-->
 <section class="relative bg-gray-50">
   <div class="container py-20">
-    <div class="text-3xl font-principal text-center font-semibold md:text-4xl 2xl:text-5xl">
+    <div
+      class="text-3xl font-principal text-center font-semibold md:text-4xl 2xl:text-5xl"
+    >
       <h2>Encuentra Articulos de calidad sobre programacion</h2>
     </div>
-    <div>
-
-    </div>
+    <div></div>
   </div>
 </section>
 
-<Footer/>
+<Footer />

@@ -3,7 +3,10 @@
   export let title;
 </script>
 
-<details class="mb-3 border-stone-500 p-4 [&_svg]:open:-rotate-180 w-[650px]">
+<details
+  class="mb-3 border-stone-500 p-4 [&_svg]:open:-rotate-180 w-[650px]"
+  name="questions"
+>
   <!-- Deshabilitamos el triángulo/flecha predeterminado del summary -->
   <summary
     class="flex cursor-pointer list-none items-center gap-1 font-semibold text-lg"

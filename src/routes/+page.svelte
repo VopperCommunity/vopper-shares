@@ -1,9 +1,9 @@
 <script>
-  import estudio from "$lib/images/estudio_landing.png"; //importacion de estudio
+  import estudio from "$lib/images/estudio_landing.avif"; //importacion de estudio
   import RecognizedDevCard from "../components/landing/RecognizedDevCard.svelte";
   import Navbar from "../components/navbar/Navbar.svelte"; //importacion de navbar (falta responsive)
   import Footer from "../components/footer/footer.svelte"; //Import footer - no responsive
-  
+
   let devsRecognized = [
     {
       fullName: "Olivia Reynolds",
@@ -103,7 +103,9 @@
 <section class="relative bg-gray-50">
   <div class="container py-20">
     <div class="px-5 grid grid-cols-1 lg:grid-cols-2">
-      <div class="px-6 text-3xl font-bold font-principal md:text-4xl 2xl:text-5xl">
+      <div
+        class="px-6 text-3xl font-bold font-principal md:text-4xl 2xl:text-5xl"
+      >
         <h2>Obten insignias por el reconocimiento de tu trabajo</h2>
       </div>
       <p
@@ -127,4 +129,4 @@
   </div>
 </section>
 
-<Footer/>
+<Footer />

@@ -1,15 +1,21 @@
-<script>
+<script lang="ts">
   export let title;
   export let price;
-  export let options = [];
+  export let options: any = [];
 </script>
 
-<div class="mx-auto max-w-6xl px-12 mb-10 ml-48">
-  <div class="flex flex-wrap gap-3 border-2 rounded-lg">
+<div class="mb-10 gap-3 border-2 rounded-lg">
+  <div class="flex flex-wrap">
     <label class="cursor-pointer">
-      <input id="selected" type="radio" class="peer sr-only" name="pricing" />
+      <input
+        id="selected"
+        type="radio"
+        class="peer sr-only"
+        name="pricing"
+        value={price}
+      />
       <div
-        class="w-72 max-w-xl rounded-md bg-white p-5 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-[#6c69f6] peer-checked:ring-[#6c69f6] peer-checked:ring-offset-2"
+        class="w-[318px] rounded-md bg-white p-5 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-[#6c69f6] peer-checked:ring-[#6c69f6] peer-checked:ring-offset-2"
       >
         <div class="flex flex-col gap-1">
           <div class="flex items-center">

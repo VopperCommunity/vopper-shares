@@ -1,7 +1,41 @@
 <script>
   import estudio from "$lib/images/estudio_landing.avif"; //importacion de estudio
+  import RecognizedDevCard from "../components/landing/RecognizedDevCard.svelte";
   import Navbar from "../components/navbar/Navbar.svelte"; //importacion de navbar (falta responsive)
-  import Footer from "../components/footer/footer.svelte"; //Import footer - no responsive
+  let devsRecognized = [
+    {
+      fullName: "Olivia Reynolds",
+      description:
+        "Film critic and movie aficionado, sharing deep analysis on the latest blockbusters.",
+      role: "Backend Dev Senior",
+      views: 5200000,
+      imgSrc: estudio,
+    },
+    {
+      fullName: "Alexander Hughes",
+      description:
+        "Award-winning sci-fi writer with a knack for creating futuristic worlds.",
+      role: "Diseñador UI/UX",
+      views: 300000,
+      imgSrc: estudio,
+    },
+    {
+      fullName: "Christopher Brown",
+      description:
+        "Tech enthusiast & software engineer, passionate about technologies.",
+      role: "Frontend Dev JR",
+      views: 35000,
+      imgSrc: estudio,
+    },
+    {
+      fullName: "Sophia Anderson",
+      description:
+        "Fashionista and stylist, guide to build your personal and sustainable closet.",
+      role: "Ingeniera DevOps",
+      views: 232,
+      imgSrc: estudio,
+    },
+  ];
 </script>
 
 <Navbar />
@@ -60,6 +94,34 @@
       <h2>Encuentra Articulos de calidad sobre programacion</h2>
     </div>
     <div></div>
+  </div>
+</section>
+
+<!-- ----------------------------------- Recognitions section ----------------------------------- -->
+<section class="relative bg-gray-50">
+  <div class="container py-20">
+    <div class="px-5 grid grid-cols-1 lg:grid-cols-2">
+      <div class="px-6 text-3xl font-bold font-principal md:text-4xl 2xl:text-5xl">
+        <h2>Obten insignias por el reconocimiento de tu trabajo</h2>
+      </div>
+      <p
+        class="pt-2 px-6 font-[Raleway] md:text-lg 2xl:text-xl font-normal text-[#323842]"
+      >
+        Escribe articulos y deja que las personas voten por ti para recibir una
+        insignia por ser escritor
+      </p>
+    </div>
+    <div class="mt-20 flex flex-wrap justify-center gap-10">
+      {#each devsRecognized as dev}
+        <RecognizedDevCard
+          fullName={dev.fullName}
+          description={dev.description}
+          role={dev.role}
+          views={dev.views}
+          imgSrc={dev.imgSrc}
+        />
+      {/each}
+    </div>
   </div>
 </section>
 

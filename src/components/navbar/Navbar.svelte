@@ -21,9 +21,8 @@
             >
           </li>
           <li>
-            <a
-              href="/subscriptions"
-              class="hover:text-black ease-linear duration-200">Planes</a
+            <a href="/pricing" class="hover:text-black ease-linear duration-200"
+              >Planes</a
             >
           </li>
           <li>

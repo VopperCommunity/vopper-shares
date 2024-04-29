@@ -1,8 +1,8 @@
 <script>
   import Navbar from "../../components/navbar/Navbar.svelte";
-  import devshares from "$lib/images/devshares.png";
-  import Details from "../../components/subscription/DetailsComponent.svelte";
-  import Plans from "../../components/subscription/PlansComponent.svelte";
+  import devshares from "$lib/images/devshares.avif";
+  import Details from "../../components/pricing/DetailsComponent.svelte";
+  import Plans from "../../components/pricing/PlansComponent.svelte";
 
   let freeOptions = ["Read unlimited", "Publish 1 article"];
   let monthlyOptions = [

@@ -1,17 +1,21 @@
 <script>
-    export let title;
-    export let img ;
+    import articleImages from "$lib/images/articleImages.png";
+    export let title = "Hola mundo";
+    export let img = articleImages;
     export const user = {
       name: 'Nombre del Usuario',
       date: "Fecha de registro",
-      imgUSer: ""
+      imgUSer: "",
     };
   </script>
   
-  <div class=" grid grid-cols-2 border-black border-2 rounded-xl mx-auto max-w-6xl px-12 mb-10 ml-48">
-    <picture class="p-5">
-      <img src={img} alt="">
-    </picture>
+  <div class=" flex flex-row justify- p-3 border-black border-2 rounded-xl ">
+    
+    <img 
+    src={img} 
+    class="rounded-2xl w-40 h-28 p-2"
+    >
+    
 
     <section>
     
@@ -23,6 +27,9 @@
         <div>
             <h1>{user.name}</h1>
             <p>{user.date}</p>
+            <picture>
+              <img src={user.imgUSer} alt="">
+            </picture>
         </div>
     </div>
   </section>

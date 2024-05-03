@@ -1,10 +1,46 @@
 <script>
-	import Article from './../components/landingpages/Article.svelte';
+	import Article from '../components/landing/Article.svelte';
+  import RecognizedDevCard from "../components/landing/RecognizedDevCard.svelte";
 	import  image  from '$lib/images/image.png';
   import estudio from "$lib/images/estudio_landing.png"; //importacion de estudio
   import Navbar from "../components/navbar/Navbar.svelte"; //importacion de navbar (falta responsive)
   import Footer from "../components/footer/footer.svelte"; //importacion de footer
   
+  let devsRecognized = [
+    {
+      fullName: "Olivia Reynolds",
+      description:
+        "Film critic and movie aficionado, sharing deep analysis on the latest blockbusters.",
+      role: "Backend Dev Senior",
+      views: 5200000,
+      imgSrc: estudio,
+    },
+    {
+      fullName: "Alexander Hughes",
+      description:
+        "Award-winning sci-fi writer with a knack for creating futuristic worlds.",
+      role: "Diseñador UI/UX",
+      views: 300000,
+      imgSrc: estudio,
+    },
+    {
+      fullName: "Christopher Brown",
+      description:
+        "Tech enthusiast & software engineer, passionate about technologies.",
+      role: "Frontend Dev JR",
+      views: 35000,
+      imgSrc: estudio,
+    },
+    {
+      fullName: "Sophia Anderson",
+      description:
+        "Fashionista and stylist, guide to build your personal and sustainable closet.",
+      role: "Ingeniera DevOps",
+      views: 232,
+      imgSrc: estudio,
+    },
+  ];
+
 </script>
 
 <Navbar />
@@ -78,7 +114,7 @@
       >
     </div>
 
-    <div class="flex flex-col   justify-around gap-20 py-20 md:flex-row ">
+    <div class="flex flex-col   justify-around gap-20 py-20  lg:flex-row ">
       
       <div class="flex justify-center">
         <div class="max-w-max mx-auto">
@@ -86,7 +122,7 @@
             <img
               src={image}
               alt="Content image"
-              class=" max-w-md w-full  md:h-[660px] rounded-lg shadow-lg shadow-black md:"
+              class=" max-w-md w-full  md:h-[770px] rounded-lg shadow-lg shadow-black md:"
             />
             <div
               class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent rounded-lg"
@@ -156,7 +192,7 @@
   
         </div>
 
-        <section class="mt-5 ">
+        <article class="mt-5 ">
           
           <header>
             <nav class="flex list-none gap-4 justify-center items-center md:justify-start">
@@ -167,8 +203,9 @@
           </header>
 
             <div
-             class="grid grid-flow-row max-h-[75vh] overflow-y-auto mt-10 justify-stretch gap-9 scrollbar-hide
-             lg:max-h-[67vh]">
+             class="grid grid-flow-row  mt-10 justify-stretch gap-5 scrollbar-hide"
+             style="max-height: 690px; overflow-y: auto;"
+             >
               <Article/>
               <Article/>
               <Article/>
@@ -176,8 +213,14 @@
               <Article/>
 
             </div>
-        
-        </section>
+            
+            <div class = "flex justify-center lg:justify-start mt-5 items-center gap-3">
+              <a href="" class= ""> ver más</a>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...$$props}>
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12h16m0 0l-6-6m6 6l-6 6" />
+              </svg>
+            </div> 
+          </article>
 
       </div>
 
@@ -203,5 +246,34 @@
 
   </div>
 </section>
+
+<!-- ----------------------------------- Recognitions section ----------------------------------- -->
+<section class="relative bg-gray-50">
+  <div class="container py-20">
+    <div class="px-5 grid grid-cols-1 lg:grid-cols-2">
+      <div class="px-6 text-3xl font-bold font-principal md:text-4xl 2xl:text-5xl">
+        <h2>Obten insignias por el reconocimiento de tu trabajo</h2>
+      </div>
+      <p
+        class="pt-2 px-6 font-[Raleway] md:text-lg 2xl:text-xl font-normal text-[#323842]"
+      >
+        Escribe articulos y deja que las personas voten por ti para recibir una
+        insignia por ser escritor
+      </p>
+    </div>
+    <div class="mt-20 flex flex-wrap justify-center gap-10">
+      {#each devsRecognized as dev}
+        <RecognizedDevCard
+          fullName={dev.fullName}
+          description={dev.description}
+          role={dev.role}
+          views={dev.views}
+          imgSrc={dev.imgSrc}
+        />
+      {/each}
+    </div>
+  </div>
+</section>
+
 
 <Footer/>

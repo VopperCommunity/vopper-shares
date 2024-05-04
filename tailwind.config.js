@@ -14,7 +14,8 @@ export default {
         'principal': ['Bitter', 'serif;']
       },
       colors:{
-        'purple-light': "#CFCFFC"
+        'purple-light': "#CFCFFC",
+        'gray-light': "#4F5464",
       }
     }
   },

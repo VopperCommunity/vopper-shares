@@ -16,8 +16,6 @@
   });
 </script>
 
-,
-
 <dialog
   class={`dialog p-10 ${customClass}`}
   bind:this={dialog}

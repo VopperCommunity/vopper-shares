@@ -3,7 +3,10 @@
   import RecognizedDevCard from "../components/landing/RecognizedDevCard.svelte";
   import Navbar from "../components/navbar/Navbar.svelte"; //importacion de navbar (falta responsive)
   import Footer from "../components/footer/footer.svelte"; //Import footer - no responsive
-  
+  import Arrow from "$lib/images/arrow.svelte";
+  import Info from "$lib/images/info.svelte";
+  import Pill from "../components/pillsInfo/pill.info.svelte";
+
   let devsRecognized = [
     {
       fullName: "Olivia Reynolds",
@@ -98,12 +101,36 @@
     <div></div>
   </div>
 </section>
+<!-- A info section about the page-->
+<div class="rounded-t-3xl bg-purple-light h-[641px] w-full-screen flex">
+  <aside class="ml-40 content-center">
+    <h1 class="font-semibold text-5xl font-principal">
+      Una plataforma para devs
+    </h1>
+    <p class="mt-16 text-gray-light w-[420px] text-justify text-pretty">
+      Lectores y escritores pueden conectar con otras personas con experiencias
+      y conocimientos similares.
+    </p>
+
+    <button
+      class="bg-black rounded-t-3xl rounded-br-3xl p-3 flex justify-center text-white mt-24"
+      >Aprender más alaburger <Arrow styles="ml-3 mt-1" /></button
+    >
+  </aside>
+  <section class="flex flex-col space-y-5 ml-48 mt-48">
+    <Pill text="Los lectores pueden encontrar contenido a su gusto" />
+    <Pill text="Los escritores pueden recibir feedback de otros devs" />
+    <Pill text="Conecta con eventos" />
+  </section>
+</div>
 
 <!-- ----------------------------------- Recognitions section ----------------------------------- -->
 <section class="relative bg-gray-50">
   <div class="container py-20">
     <div class="px-5 grid grid-cols-1 lg:grid-cols-2">
-      <div class="px-6 text-3xl font-bold font-principal md:text-4xl 2xl:text-5xl">
+      <div
+        class="px-6 text-3xl font-bold font-principal md:text-4xl 2xl:text-5xl"
+      >
         <h2>Obten insignias por el reconocimiento de tu trabajo</h2>
       </div>
       <p
@@ -127,4 +154,4 @@
   </div>
 </section>
 
-<Footer/>
+<Footer />

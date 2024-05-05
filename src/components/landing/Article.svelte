@@ -14,15 +14,15 @@
   
   <img 
   src={img} 
-  class="rounded-2xl  p-2"
+  class="rounded-2xl size-[164px] p-2 lg:size-[183px]"
   >
 
   <section class=" flex flex-col justify-between my-5 ml-3">
     <header>
-      <h1 class=" text-xl font-semibold max-w-64">{title}</h1>    
+      <h1 class="text-tail text-xl font-semibold max-w-64">{title}</h1>    
     </header>
      
-  <div class="flex gap-5 mt-5 ">
+  <div class="flex size- gap-5 mt-5 ">
           <picture>
             <img src={user.imgUSer} alt="">
           </picture>

@@ -114,15 +114,17 @@
       >
     </div>
 
-    <div class="flex flex-col   justify-around gap-20 py-20  lg:flex-row ">
+    <div class="flex flex-col justify-between gap-20 py-20 lg:flex-row ">
       
-      <div class="flex justify-center">
-        <div class="max-w-max mx-auto">
+
+      <!--  Article Scroll--->
+      <div class="w-auto">
+        <div class="max-w-full mx-full">
           <div class="relative">
             <img
               src={image}
               alt="Content image"
-              class=" max-w-md w-full  md:h-[770px] rounded-lg shadow-lg shadow-black md:"
+              class="  w-full  md:h-[970px] rounded-lg shadow-lg shadow-black md:"
             />
             <div
               class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent rounded-lg"
@@ -154,6 +156,7 @@
           </div>
         </div>
 
+        <!-- section arcticle -->
       <div class="flex-col justify-center  items-center">
         
         <div class="flex items-center justify-center ga ">
@@ -214,7 +217,7 @@
 
             </div>
             
-            <div class = "flex justify-center lg:justify-start mt-5 items-center gap-3">
+            <div class = "flex justify-center lg:justify-start mt-5 items-center gap-3 text-slate-600 hover:text-black">
               <a href="" class= ""> ver más</a>
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...$$props}>
                 <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12h16m0 0l-6-6m6 6l-6 6" />
@@ -226,6 +229,7 @@
 
     </div>
 
+    <!--Start-->
     <div class="flex justify-end">
       <svg
         class="size-14 rotate-12 text-teal-400 animate-pulse"

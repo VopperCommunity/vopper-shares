@@ -1,6 +1,9 @@
 <script>
-  import estudio from "$lib/images/estudio_landing.png"; //importacion de estudio
+	import Article from './../components/landing/Article.svelte';
+	import ScrollArticle from './../components/landing/ScrollArticle.svelte';
   import RecognizedDevCard from "../components/landing/RecognizedDevCard.svelte";
+	import  image  from '$lib/images/image.png';
+  import estudio from "$lib/images/estudio_landing.png"; //importacion de estudio
   import Navbar from "../components/navbar/Navbar.svelte"; //importacion de navbar (falta responsive)
   import Footer from "../components/footer/footer.svelte"; //Import footer - no responsive
   import Arrow from "$lib/images/arrow.svelte";
@@ -41,6 +44,9 @@
       imgSrc: estudio,
     },
   ];
+  
+ 
+
 </script>
 
 <Navbar />
@@ -49,6 +55,7 @@
 <section class="relative">
   <div class="container py-20">
     <div class="flex flex-col items-center z-20 md:flex-row">
+      
       <div class="flex flex-col md:flex-row items-center">
         <div class="text-left mb-12 md:w-1/2 md:pr-10 md:text-justify">
           <p
@@ -92,13 +99,128 @@
 
 <!--Images section-->
 <section class="relative bg-gray-50">
+
   <div class="container py-20">
-    <div
-      class="text-3xl font-principal text-center font-semibold md:text-4xl 2xl:text-5xl"
-    >
-      <h2>Encuentra Articulos de calidad sobre programacion</h2>
+
+    <div>
+    <h2 class="text-4xl text-center font-bold font-principal">Encuentra Articulos de calidad sobre programacion</h2>
     </div>
-    <div></div>
+
+    <div class="mt-8">
+      <svg
+        class="size-14 -rotate-12 text-gray-300 animate-pulse"
+        xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        viewBox="0 0 12 12"
+        ><path
+          fill="currentColor"
+          d="M5.283 1.546a.8.8 0 0 1 1.435 0L7.83 3.798l2.486.361a.8.8 0 0 1 .443 1.365L8.96 7.277l.425 2.476a.8.8 0 0 1-1.16.844L6 9.427l-2.224 1.17a.8.8 0 0 1-1.16-.844l.424-2.476l-1.799-1.753a.8.8 0 0 1 .444-1.365l2.486-.36z"
+        /></svg
+      >
+    </div>
+
+    <div class="flex flex-col justify-between gap-20 py-20 lg:flex-row ">
+      
+
+      <!--  Article Scroll--->
+      <section class="w-auto">
+        <div class="max-w-xl mx-full">
+            <ScrollArticle/>
+          </div>
+
+      </section>
+
+        <!-- section arcticle -->
+      <div class="flex-col justify-center  items-center">
+        
+        <div class="flex items-center justify-center ga ">
+        <svg
+          class="size-8"
+          xmlns="http://www.w3.org/2000/svg"
+          width="1em"
+          height="1em"
+          viewBox="0 0 256 256"
+          ><path
+            fill="currentColor"
+            d="M244 56v64a12 12 0 0 1-24 0V85l-75.51 75.52a12 12 0 0 1-17 0L96 129l-63.51 63.49a12 12 0 0 1-17-17l72-72a12 12 0 0 1 17 0L136 135l67-67h-35a12 12 0 0 1 0-24h64a12 12 0 0 1 12 12"
+          /></svg
+        >
+        <h1 class="text-center font-semibold text-2xl">Artículos de programación</h1>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-4 mt-5 ">
+        
+          <div class="flex text-center bg-white  rounded-2xl p-2">
+            <h1 class="font-principal text-xs"># Everything Explained</h1>
+          </div>
+  
+          <div class="flex text-center bg-white  rounded-2xl p-2">
+            <h1 class="font-principal  text-xs"># Tech Reads</h1>
+          </div>
+  
+          
+          <div class="flex text-center bg-white  rounded-2xl p-2">
+            <h1 class="font-principal  text-xs"># Family Theraphy</h1>
+          </div>
+          
+          <div class="flex text-center bg-white  rounded-2xl p-2">
+            <h1 class="font-principal  text-xs"># Hola mundo</h1>
+          </div>
+  
+        </div>
+
+        <article class="mt-5 ">
+          
+          <header>
+            <nav class="flex list-none gap-4 justify-center items-center md:justify-start">
+              <a class="border-solid border-purple-700 border-b-4">Novedades</a>
+              <a class="border-solid border-purple-700 hover:border-b-4">Populares</a>
+              <a class="border-solid border-purple-700 hover:border-b-4">Escritores</a>
+            </nav>
+          </header>
+            <div
+             class="grid grid-flow-row max-h-fit  mt-10 justify-stretch gap-5 scrollbar-hide"
+             style=" max-height: px; overflow-y: auto;"
+             >
+             <Article id="articleID"/>
+             <Article />
+             <Article />
+             <Article />
+
+            </div>
+          
+            <div class = "flex justify-center lg:justify-start mt-5 items-center gap-3 text-slate-600 hover:text-black">
+              <a href="/explorer" class= ""> ver más</a>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...$$props}>
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12h16m0 0l-6-6m6 6l-6 6" />
+              </svg>
+            </div> 
+          </article>
+
+      </div>
+
+    </div>
+
+    <!--Start-->
+    <div class="flex justify-end">
+      <svg
+        class="size-14 rotate-12 text-teal-400 animate-pulse"
+        xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        viewBox="0 0 12 12"
+        ><path
+          fill="currentColor"
+          d="M5.283 1.546a.8.8 0 0 1 1.435 0L7.83 3.798l2.486.361a.8.8 0 0 1 .443 1.365L8.96 7.277l.425 2.476a.8.8 0 0 1-1.16.844L6 9.427l-2.224 1.17a.8.8 0 0 1-1.16-.844l.424-2.476l-1.799-1.753a.8.8 0 0 1 .444-1.365l2.486-.36z"
+        /></svg
+      >
+    </div>
+
+    <div>
+      <div class="bg-slate-700"></div>
+    </div>
+
   </div>
 </section>
 <!-- A info section about the page-->

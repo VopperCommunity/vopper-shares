@@ -27,6 +27,8 @@
 	"type": "module",
 	"dependencies": {
 		"@tiptap/core": "^2.3.1",
+		"@tiptap/extension-link": "^2.3.2",
+		"@tiptap/extension-underline": "^2.3.2",
 		"@tiptap/pm": "^2.3.1",
 		"@tiptap/starter-kit": "^2.3.1",
 		"js-cookie": "^3.0.5",

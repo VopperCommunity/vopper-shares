@@ -1,196 +1,167 @@
-<script src="https://cdn.tailwindcss.com?plugins=typography" lang="ts">
+<script lang="ts">
   import StarterKit from "@tiptap/starter-kit";
   import { Editor } from "@tiptap/core";
   import { onMount } from "svelte";
-  import Bold from "@tiptap/extension-bold";
+  import BoldIcon from "$lib/icons/article-editor/BoldIcon.svelte";
+  import ItalicIcon from "$lib/icons/article-editor/ItalicIcon.svelte";
+  import UnderlineIcon from "$lib/icons/article-editor/UnderlineIcon.svelte";
+  import StrikeIcon from "$lib/icons/article-editor/StrikeIcon.svelte";
+  import HyperlinkIcon from "$lib/icons/article-editor/HyperlinkIcon.svelte";
+  import CodeIcon from "$lib/icons/article-editor/CodeIcon.svelte";
+  import BulletListIcon from "$lib/icons/article-editor/BulletListIcon.svelte";
+  import OrderedListIcon from "$lib/icons/article-editor/OrderedListIcon.svelte";
+  import ImageIcon from "$lib/icons/article-editor/ImageIcon.svelte";
+  import MoreIcon from "$lib/icons/article-editor/MoreIcon.svelte";
+  import Link from "@tiptap/extension-link";
+  import Underline from "@tiptap/extension-underline";
+  import UndoIcon from "$lib/icons/article-editor/UndoIcon.svelte";
+  import RedoIcon from "$lib/icons/article-editor/RedoIcon.svelte";
+  import HeadsetIcon from "$lib/icons/article-editor/HeadsetIcon.svelte";
+  import Navbar from "../../../components/navbar/Navbar.svelte";
+  import Footer from "../../../components/footer/footer.svelte";
 
   let element: HTMLElement;
   let editor!: Editor;
-
-  const CustomBold = Bold.extend({
-    renderHTML({ HTMLAttributes }) {
-      // Original:
-      // return ['strong', HTMLAttributes, 0]
-      return ["b", HTMLAttributes, 0];
-    },
-  });
 
   onMount(() => {
     editor = new Editor({
       element: element,
       editorProps: {
         attributes: {
-          class:
-            "prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none",
+          class: "",
         },
       },
-      extensions: [StarterKit, CustomBold],
-      content: `
-    <h2>
-      Hi there, <b>hola</b>
-    </h2>
-    <p>
-      this is a basic <em>basic</em> example of <strong>tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
-    </p>
-    <ul>
-      <li>
-        That’s a bullet list with one …
-      </li>
-      <li>
-        … or two list items.
-      </li>
-    </ul>
-    <p>
-      Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
-    </p>
-<pre><code class="language-css">body {
-  display: none;
-}</code></pre>
-    <p>
-      I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
-    </p>
-    <blockquote>
-      Wow, that’s amazing. Good work, boy! 👏
-      <br />
-      — Mom
-    </blockquote>
-  `,
+      extensions: [
+        StarterKit,
+        Link.configure({
+          openOnClick: true,
+          autolink: true,
+        }),
+        Underline,
+      ],
+      content: String,
+      autofocus: true,
       onTransaction: () => {
         // force re-render so `editor.isActive` works as expected
         editor = editor;
       },
     });
   });
+
+  function setLink() {
+    const previousUrl = editor.getAttributes("link").href;
+    const url = window.prompt("URL", previousUrl);
+
+    if (url === null) {
+      return;
+    }
+
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+      return;
+    }
+
+    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
+  }
 </script>
 
-{#if editor}
-  <div>
-    <div>
-      <button
-        on:click={() => editor.chain().focus().toggleBold().run()}
-        disabled={!editor.can().chain().focus().toggleBold().run()}
-        class={editor.isActive("bold") ? "is-active" : ""}
-      >
-        bold
-      </button>
-      <button
-        on:click={() => editor.chain().focus().toggleItalic().run()}
-        disabled={!editor.can().chain().focus().toggleItalic().run()}
-        class={editor.isActive("italic") ? "is-active" : ""}
-      >
-        italic
-      </button>
-      <button
-        on:click={() => editor.chain().focus().toggleStrike().run()}
-        disabled={!editor.can().chain().focus().toggleStrike().run()}
-        class={editor.isActive("strike") ? "is-active" : ""}
-      >
-        strike
-      </button>
-      <button
-        on:click={() => editor.chain().focus().toggleCode().run()}
-        disabled={!editor.can().chain().focus().toggleCode().run()}
-        class={editor.isActive("code") ? "is-active" : ""}
-      >
-        code
-      </button>
-      <button on:click={() => editor.chain().focus().unsetAllMarks().run()}>
-        clear marks
-      </button>
-      <button on:click={() => editor.chain().focus().clearNodes().run()}>
-        clear nodes
-      </button>
-      <button
-        on:click={() => editor.chain().focus().setParagraph().run()}
-        class={editor.isActive("paragraph") ? "is-active" : ""}
-      >
-        paragraph
-      </button>
-      <button
-        on:click={() =>
-          editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        class={editor.isActive("heading", { level: 1 }) ? "is-active" : ""}
-      >
-        h1
-      </button>
-      <button
-        on:click={() =>
-          editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        class={editor.isActive("heading", { level: 2 }) ? "is-active" : ""}
-      >
-        h2
-      </button>
-      <button
-        on:click={() =>
-          editor.chain().focus().toggleHeading({ level: 3 }).run()}
-        class={editor.isActive("heading", { level: 3 }) ? "is-active" : ""}
-      >
-        h3
-      </button>
-      <button
-        on:click={() =>
-          editor.chain().focus().toggleHeading({ level: 4 }).run()}
-        class={editor.isActive("heading", { level: 4 }) ? "is-active" : ""}
-      >
-        h4
-      </button>
-      <button
-        on:click={() =>
-          editor.chain().focus().toggleHeading({ level: 5 }).run()}
-        class={editor.isActive("heading", { level: 5 }) ? "is-active" : ""}
-      >
-        h5
-      </button>
-      <button
-        on:click={() =>
-          editor.chain().focus().toggleHeading({ level: 6 }).run()}
-        class={editor.isActive("heading", { level: 6 }) ? "is-active" : ""}
-      >
-        h6
-      </button>
-      <button
-        on:click={() => editor.chain().focus().toggleBulletList().run()}
-        class={editor.isActive("bulletList") ? "is-active" : ""}
-      >
-        bullet list
-      </button>
-      <button
-        on:click={() => editor.chain().focus().toggleOrderedList().run()}
-        class={editor.isActive("orderedList") ? "is-active" : ""}
-      >
-        ordered list
-      </button>
-      <button
-        on:click={() => editor.chain().focus().toggleCodeBlock().run()}
-        class={editor.isActive("codeBlock") ? "is-active" : ""}
-      >
-        code block
-      </button>
-      <button
-        on:click={() => editor.chain().focus().toggleBlockquote().run()}
-        class={editor.isActive("blockquote") ? "is-active" : ""}
-      >
-        blockquote
-      </button>
-      <button on:click={() => editor.chain().focus().setHorizontalRule().run()}>
-        horizontal rule
-      </button>
-      <button on:click={() => editor.chain().focus().setHardBreak().run()}>
-        hard break
-      </button>
-      <button
-        on:click={() => editor.chain().focus().undo().run()}
-        disabled={!editor.can().chain().focus().undo().run()}
-      >
-        undo
-      </button>
-      <button
-        on:click={() => editor.chain().focus().redo().run()}
-        disabled={!editor.can().chain().focus().redo().run()}
-      >
-        redo
-      </button>
+<Navbar />
+<section
+  class="w-full h-full flex justify-center items-center border-[1px] border-[#BCC1CAFF]"
+>
+  {#if editor}
+    <div id="editorNav" class="flex w-[60%] justify-between items-center">
+      <div class="border-[#BCC1CAFF]">
+        <button
+          on:click={() => editor.chain().focus().undo().run()}
+          disabled={!editor.can().chain().focus().undo().run()}
+        >
+          <UndoIcon />
+        </button>
+        <button
+          on:click={() => editor.chain().focus().redo().run()}
+          disabled={!editor.can().chain().focus().redo().run()}
+        >
+          <RedoIcon />
+        </button>
+      </div>
+      <div>
+        <button
+          on:click={() => editor.chain().focus().toggleBold().run()}
+          disabled={!editor.can().chain().focus().toggleBold().run()}
+          class={editor.isActive("bold") ? "is-active" : ""}
+        >
+          <BoldIcon />
+        </button>
+        <button
+          on:click={() => editor.chain().focus().toggleItalic().run()}
+          disabled={!editor.can().chain().focus().toggleItalic().run()}
+          class={editor.isActive("italic") ? "is-active" : ""}
+        >
+          <ItalicIcon />
+        </button>
+        <button
+          on:click={() => editor.chain().focus().toggleStrike().run()}
+          disabled={!editor.can().chain().focus().toggleStrike().run()}
+          class={editor.isActive("strike") ? "is-active" : ""}
+        >
+          <StrikeIcon />
+        </button>
+        <button
+          on:click={() => editor.chain().focus().toggleUnderline().run()}
+          disabled={!editor.can().chain().focus().toggleUnderline().run()}
+        >
+          <UnderlineIcon />
+        </button>
+      </div>
+      <div>
+        <button
+          on:click={() => editor.chain().focus().toggleCodeBlock().run()}
+          class={editor.isActive("codeBlock") ? "is-active" : ""}
+        >
+          <CodeIcon />
+        </button>
+      </div>
+      <div>
+        <button on:click={() => setLink()}>
+          <HyperlinkIcon />
+        </button>
+
+        <button on:click={() => editor.chain().focus().clearNodes().run()}>
+          <ImageIcon />
+        </button>
+
+        <button on:click={() => editor.chain().focus().clearNodes().run()}>
+          <HeadsetIcon />
+        </button>
+      </div>
+      <div>
+        <button
+          on:click={() => editor.chain().focus().toggleBulletList().run()}
+          class={editor.isActive("bulletList") ? "is-active" : ""}
+        >
+          <BulletListIcon />
+        </button>
+        <button
+          on:click={() => editor.chain().focus().toggleOrderedList().run()}
+          class={editor.isActive("orderedList") ? "is-active" : ""}
+        >
+          <OrderedListIcon />
+        </button>
+      </div>
+      <div>
+        <button
+          class="flex items-center"
+          on:click={() => editor.chain().focus().clearNodes().run()}
+        >
+          <MoreIcon />
+        </button>
+      </div>
     </div>
-  </div>
-{/if}
-<div bind:this={element} />
+  {/if}
+</section>
+<section class="container flex flex-col items-center justify-center">
+  <div class="w-[60%] h-screen" bind:this={element} />
+</section>
+
+<Footer />

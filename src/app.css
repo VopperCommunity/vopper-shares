@@ -3,3 +3,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tiptap {
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.tiptap p {
+  color: #171A1FFF;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+#editorNav button {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+#editorNav>div {
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 27px;
+}
+
+#editorNav button svg {
+  color: #6E7787FF;
+}

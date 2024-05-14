@@ -2,6 +2,9 @@
   import StarterKit from "@tiptap/starter-kit";
   import { Editor } from "@tiptap/core";
   import { onMount } from "svelte";
+  import Link from "@tiptap/extension-link";
+  import Underline from "@tiptap/extension-underline";
+  import Image from "@tiptap/extension-image";
   import BoldIcon from "$lib/icons/article-editor/BoldIcon.svelte";
   import ItalicIcon from "$lib/icons/article-editor/ItalicIcon.svelte";
   import UnderlineIcon from "$lib/icons/article-editor/UnderlineIcon.svelte";
@@ -12,8 +15,6 @@
   import OrderedListIcon from "$lib/icons/article-editor/OrderedListIcon.svelte";
   import ImageIcon from "$lib/icons/article-editor/ImageIcon.svelte";
   import MoreIcon from "$lib/icons/article-editor/MoreIcon.svelte";
-  import Link from "@tiptap/extension-link";
-  import Underline from "@tiptap/extension-underline";
   import UndoIcon from "$lib/icons/article-editor/UndoIcon.svelte";
   import RedoIcon from "$lib/icons/article-editor/RedoIcon.svelte";
   import HeadsetIcon from "$lib/icons/article-editor/HeadsetIcon.svelte";
@@ -22,6 +23,7 @@
 
   let element: HTMLElement;
   let editor!: Editor;
+  let selectedImage: File | null = null;
 
   onMount(() => {
     editor = new Editor({
@@ -38,6 +40,7 @@
           autolink: true,
         }),
         Underline,
+        Image,
       ],
       content: String,
       autofocus: true,
@@ -63,6 +66,24 @@
 
     editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
   }
+
+  const handleUploadFile = async () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = (event) => {
+      const target = event.target as HTMLInputElement;
+      if (target.files && target.files[0]) {
+        selectedImage = target.files[0];
+        editor.commands.setImage({
+          src: URL.createObjectURL(selectedImage),
+          alt: selectedImage.name,
+          title: selectedImage.name,
+        });
+      }
+    };
+    input.click();
+  };
 </script>
 
 <Navbar />
@@ -127,7 +148,7 @@
           <HyperlinkIcon />
         </button>
 
-        <button on:click={() => editor.chain().focus().clearNodes().run()}>
+        <button on:click={handleUploadFile}>
           <ImageIcon />
         </button>
 
@@ -160,8 +181,8 @@
     </div>
   {/if}
 </section>
-<section class="container flex flex-col items-center justify-center">
-  <div class="w-[60%] h-screen" bind:this={element} />
+<section class="container flex flex-col items-center justify-center mb-20">
+  <div class="w-[60%] min-h-screen h-full" bind:this={element} />
 </section>
 
 <Footer />

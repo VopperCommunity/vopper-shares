@@ -59,7 +59,7 @@
             </p>
             <!-- svelte-ignore a11y-invalid-attribute -->
             <a
-              href="/itemDetails"
+              href="/articleDetails"
               class="text-sm px-2 py-3 rounded-t-xl rounded-br-xl bg-orange-300 border border-black"
               >Comenzar a leer</a
             >

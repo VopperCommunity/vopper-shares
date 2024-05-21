@@ -1,8 +1,8 @@
 <script>
   import imageItem from "$lib/images/image-card-detail.png"; //importacion de imagen para la imagen del artículo
   import imageDetail from "$lib/images/image-detail-article.png"; //importacion de imagen para la imagen del artículo
-  import Card from "../../components/itemDetail/card.svelte"; //importacion de la tarjeta de detalles del artículo
-
+  import Card from "../../components/articleDetail/card.svelte"; //importacion de la tarjeta de detalles del artículo
+  import imgBlockhain from "$lib/images/blockchain-detail-article.png"; //importacion de imagen para la imagen del artículo
   let articlesRecomended = [
     {
       imgSrc: imageItem,
@@ -21,7 +21,7 @@
 
 <main class="p-10 pb-20">
     <!--article details-->
-    <section class="mx-64">
+    <section class="mx-10 lg:mx-64 ">
         <div class="flex gap-3 items-center">
             <button class="rounded-full p-2 border-2 border-[#171A1FFF]">
                 
@@ -67,9 +67,42 @@
             <p class="text-[1rem] leading-7 font-normal text-[ #171A1FFF] mt-16" style="font-family: raleway;">Blockchain technology has emerged as a groundbreaking innovation with the potential to revolutionize industries and transform our digital landscape. However, as we delve into the intricacies of blockchain, we often encounter a daunting array of technical terms, complex concepts, and seemingly impenetrable jargon.</p>
             <p  class="text-[1rem] leading-7 text-[ #171A1FFF] mt-20" style="font-family: raleway;">This raises an intriguing question: Was blockchain intentionally made confusing? In this article, we embark on a quest to demystify blockchain, exploring the motivations behind its perceived complexity and shedding light on how we can unravel its intricacies.</p>
             
-            <h1 class=" text-[ #171A1FFF] font-bold leading-9 text-2xl" style="font-family:bitter">Unraveling the Complexity</h1>
-            <p   class="text-[1rem] leading-7 text-[ #171A1FFF] mt-10" style="font-family: raleway;">At first glance, blockchain can appear as a labyrinth of cryptographic algorithms, consensus mechanisms, and distributed ledgers. The technical nature of blockchain has led many to believe that it was intentionally designed to be confusing, keeping it exclusive to a select few. However, upon closer inspection, we discover that the complexity of blockchain arises from the inherent challenges it seeks to overcome.</p>
+            <h1 class=" text-[ #171A1FFF] font-bold mt-20 leading-9 text-2xl" style="font-family:bitter">Unraveling the Complexity</h1>
+            <p   class="text-[1rem] leading-7 text-[ #171A1FFF] my-10" style="font-family: raleway;">At first glance, blockchain can appear as a labyrinth of cryptographic algorithms, consensus mechanisms, and distributed ledgers. The technical nature of blockchain has led many to believe that it was intentionally designed to be confusing, keeping it exclusive to a select few. However, upon closer inspection, we discover that the complexity of blockchain arises from the inherent challenges it seeks to overcome.</p>
         </div>
+    </section>
+    <section class=" mx-12 lg:mx-60 flex flex-col gap-16">
+     <div style=" font-family:raleway">
+      <h1 class=" text-xl" > 1. Security and Trust</h1>
+      <img src="{imgBlockhain}" alt="image" class="w-full m-4">
+      <p class=" m-4">
+        Blockchain aims to create a secure and trustworthy system for conducting transactions and storing information. Its complexity is a direct result of the robust security measures and cryptographic protocols it employs. By using advanced encryption techniques and decentralized consensus mechanisms, blockchain ensures the integrity of data and prevents tampering or fraud.
+      </p>
+     </div>
+     <div style=" font-family:raleway">
+      <h1 class=" text-xl" > 2. Decentralization and Transparency</h1>
+     
+      <p class="my-10">
+        Another key aspect of blockchain is its decentralized nature, which eliminates the need for intermediaries and central authorities. This decentralization fosters transparency and accountability, as all transactions are recorded on a public ledger that is accessible to all participants. The distributed nature of blockchain ensures that no single entity has control over the network, promoting fairness and inclusivity.
+      </p>
+     </div>
+     <div style=" font-family:raleway">
+      <h1 class=" text-xl">3. Technical challenges and innovation</h1>
+    
+      <p class=" my-10">
+        Blockchain technology is still relatively young, constantly evolving and pushing the boundaries of what is possible. As with any emerging technology, the initial stages involve experimentation, trial and error, and the exploration of various approaches. The complex nature of blockchain stems from the need to tackle technical challenges, improve scalability, and enhance interoperability.
+      </p>
+     </div>
+    </section>
+
+    <section class="mx-12 lg:mx-60" style="font-family: bitter;">
+      <h1 class="text-[32px] mt-5 mb-6 font-semibold" >Demystifying Blockchain:</h1>
+      <p class=" mt-10"  style="font-family: raleway;">
+        While the complexity of blockchain may initially appear intimidating, it is essential to emphasize that understanding blockchain is within reach for anyone willing to explore it. Numerous educational resources, online courses, and communities have emerged to bridge the knowledge gap and make blockchain more accessible.
+      </p>
+      <p class=" mt-10"  style="font-family: raleway;">
+        To demystify blockchain, breaking down complex concepts into digestible pieces is crucial. By explaining the underlying principles of cryptography, distributed consensus, and data structures, we can empower individuals to grasp the fundamentals. Visualizations, real-world examples, and simplified explanations can also play a vital role in demystifying blockchain and making it more approachable to a wider audience.
+      </p>
     </section>
     <!--cards recomended for you-->
   <section class=" w-full justify-center mt-24">
